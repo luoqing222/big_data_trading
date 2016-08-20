@@ -61,3 +61,4 @@ if __name__ == "__main__":
         data_collector.crawl_option_webpage(symbol_list,temp_folder_name,running_time)
 
     print("--- %s seconds ---" % (time.time() - start_time))
+
