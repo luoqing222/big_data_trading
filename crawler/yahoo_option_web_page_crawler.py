@@ -7,8 +7,9 @@ import datetime
 
 class YahooOptionWebPageCrawler(object):
     """class to crawl the option pages at yahoo.com """
-    def __init__(self, symbol_list, **kwargs):
+    def __init__(self, symbol_list, driver_location, **kwargs):
         self.symbol_list = symbol_list
+        self.driver_location = driver_location
         super().__init__(**kwargs)
 
     @staticmethod
@@ -37,7 +38,7 @@ class YahooOptionWebPageCrawler(object):
 
 
     def crawl_option_webpage(self, symbol_list, folder_name,running_time):
-        driver = webdriver.PhantomJS(executable_path='C:\\Users\\Qing\\AppData\\Roaming\\npm\\node_modules\\phantomjs\\lib\\phantom\\bin\\phantomjs.exe') # or add to your PATH
+        driver = webdriver.PhantomJS(executable_path=self.driver_location) # or add to your PATH
         for symbol in symbol_list:
             driver.get(self.get_option_webpage_link(symbol))
             time.sleep(2)
