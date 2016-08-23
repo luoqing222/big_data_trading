@@ -38,8 +38,10 @@ class YahooOptionWebPageCrawler(object):
 
 
     def crawl_option_webpage(self, symbol_list, folder_name,running_time):
-        driver = webdriver.PhantomJS(executable_path=self.driver_location) # or add to your PATH
+        #driver = webdriver.PhantomJS(executable_path=self.driver_location) # or add to your PATH
+        driver = webdriver.Chrome(executable_path=self.driver_location)
         for symbol in symbol_list:
+            print("loading option web page for "+ symbol)
             driver.get(self.get_option_webpage_link(symbol))
             time.sleep(2)
             soup = BeautifulSoup(driver.page_source,'html.parser')
