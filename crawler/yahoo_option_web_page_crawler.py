@@ -44,6 +44,7 @@ class YahooOptionWebPageCrawler(object):
         failed_stock=[]
         while len(stock_list)!=0:
             symbol=stock_list.pop(0)
+            print("downloading web page for "+symbol)
             try:
                 driver.get(self.get_option_webpage_link(symbol))
                 time.sleep(2)
