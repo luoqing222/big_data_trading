@@ -47,10 +47,11 @@ if __name__ == "__main__":
     parser.add_argument("--initial", help="symbol with initial")
     args = parser.parse_args()
 
-    symbol_list = ["FB", "IBM", "A", "AA"]
+    #symbol_list = ["FB", "IBM", "A", "AA"]
     
     temp_folder_name = config.get("csv", "temp_folder")
-    driver_location = config.get("driver", "Phantomjs")
+    #driver_location = config.get("driver", "Phantomjs")
+    driver_location = config.get("driver", "chrome_driver")
     
     data_collector = yahoo_option_web_page_crawler.YahooOptionWebPageCrawler(symbol_list, driver_location)
     running_time=datetime.datetime.now()

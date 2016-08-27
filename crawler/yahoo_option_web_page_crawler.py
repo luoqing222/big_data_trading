@@ -38,7 +38,8 @@ class YahooOptionWebPageCrawler(object):
 
 
     def crawl_option_webpage(self, symbol_list, folder_name,running_time):
-        driver = webdriver.PhantomJS(executable_path=self.driver_location) # or add to your PATH
+        print("number of stock is "+ str(len(symbol_list)))
+        driver = webdriver.Chrome(executable_path=self.driver_location) # or add to your PATH
         stock_list=symbol_list
         failed_stock=[]
         while len(stock_list)!=0:
