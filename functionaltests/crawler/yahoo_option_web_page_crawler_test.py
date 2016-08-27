@@ -47,7 +47,7 @@ if __name__ == "__main__":
     parser.add_argument("--initial", help="symbol with initial")
     args = parser.parse_args()
 
-    #symbol_list = ["FB", "IBM", "A", "AA"]
+    symbol_list = ["FB", "IBM", "A", "AA"]
     
     temp_folder_name = config.get("csv", "temp_folder")
     driver_location = config.get("driver", "Phantomjs")
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     if args.initial:
         data_collector.crawl_option_webpage_partial(symbol_list,temp_folder_name,running_time, args.initial)
     else:
-        data_collector.crawl_option_webpage(symbol_list,temp_folder_name,running_time)
+        data_collector.crawl_option_webpage_multiple_times(symbol_list,temp_folder_name,running_time)
 
     print("--- %s seconds ---" % (time.time() - start_time))
 

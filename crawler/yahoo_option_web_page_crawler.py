@@ -34,27 +34,46 @@ class YahooOptionWebPageCrawler(object):
 
     def crawl_option_webpage_partial(self, symbol_list, folder_name,running_time, inital_letters):
         new_symbol_list=[symbol for symbol in symbol_list if symbol.startswith(inital_letters)]
-        self.crawl_option_webpage(new_symbol_list, folder_name,running_time)
+        self.crawl_option_webpage_multiple_times(new_symbol_list, folder_name,running_time)
 
 
     def crawl_option_webpage(self, symbol_list, folder_name,running_time):
         driver = webdriver.PhantomJS(executable_path=self.driver_location) # or add to your PATH
-        for symbol in symbol_list:
-            driver.get(self.get_option_webpage_link(symbol))
-            time.sleep(2)
-            soup = BeautifulSoup(driver.page_source,'html.parser')
-            directory=self.make_folder_name(folder_name,symbol,running_time)
-            for select_menu in soup.findAll("select"):
-                if len(select_menu['data-reactid']) != 0:
-                    for options in select_menu.findAll("option"):
-                        link=self.get_option_webpage_link(symbol)+"?date="+options['value']
-                        driver.get(link)
-                        time.sleep(2)
-                        expire_date=options.string.strip()
-                        expire_date = datetime.datetime.strptime(expire_date, "%B %d, %Y")
-                        filename=directory+"/"+expire_date.strftime("%Y%m%d")+".html"
-                        with open(filename, 'wb') as f:
-                            f.write(driver.page_source.encode('utf-8'))
-        driver.quit()
+        stock_list=symbol_list
+        failed_stock=[]
+        while len(stock_list)!=0:
+            symbol=stock_list.pop(0)
+            try:
+                driver.get(self.get_option_webpage_link(symbol))
+                time.sleep(2)
+                soup = BeautifulSoup(driver.page_source,'html.parser')
+                directory=self.make_folder_name(folder_name,symbol,running_time)
+                for select_menu in soup.findAll("select"):
+                    if len(select_menu['data-reactid']) != 0:
+                        for options in select_menu.findAll("option"):
+                            link=self.get_option_webpage_link(symbol)+"?date="+options['value']
+                            driver.get(link)
+                            time.sleep(2)
+                            expire_date=options.string.strip()
+                            expire_date = datetime.datetime.strptime(expire_date, "%B %d, %Y")
+                            filename=directory+"/"+expire_date.strftime("%Y%m%d")+".html"
+                            with open(filename, 'wb') as f:
+                                f.write(driver.page_source.encode('utf-8'))
+            except:
+                failed_stock.append(symbol)
+                pass
+        try:
+            driver.quit()
+        except:
+            pass
+
+        return failed_stock
+
+    def crawl_option_webpage_multiple_times(self, symbol_list, folder_name,running_time):
+        stock_list=symbol_list
+        for i in range(0, 2):
+            stock_list=self.crawl_option_webpage(stock_list, folder_name,running_time)
+
+
         
         
