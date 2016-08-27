@@ -76,7 +76,7 @@ class YahooOptionWebPageCrawler(object):
                 pass
 
         if platform.system() == "Linux":
-            display =Display(visiable = 0, size=(1024,768))
+            display =Display(visible = 0, size=(1024,768))
             display.start()
             driver = webdriver.Chrome()
             while len(stock_list)!=0:
