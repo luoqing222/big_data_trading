@@ -56,7 +56,7 @@ if __name__ == "__main__":
     data_collector = yahoo_option_web_page_crawler.YahooOptionWebPageCrawler(symbol_list, driver_location)
     running_time=datetime.datetime.now()
     
-    if args.initial:
+    if args.index:
         data_collector.crawl_option_webpage_partial(symbol_list,temp_folder_name,running_time, args.index)
     else:
         data_collector.crawl_option_webpage_multiple_times(symbol_list,temp_folder_name,running_time)
