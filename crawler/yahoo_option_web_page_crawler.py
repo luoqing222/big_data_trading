@@ -34,8 +34,14 @@ class YahooOptionWebPageCrawler(object):
         link = "http://finance.yahoo.com/quote/" + symbol + "/options?p="+symbol
         return link
 
-    def crawl_option_webpage_partial(self, symbol_list, folder_name,running_time, inital_letters):
-        new_symbol_list=[symbol for symbol in symbol_list if symbol.startswith(inital_letters)]
+    def crawl_option_webpage_partial(self, symbol_list, folder_name,running_time, index):
+        new_symbol_list=[]
+        if index*100 <len(symbol_list):
+            if (index+1)*100<len(symbol_list):
+                new_symbol_list = symbol[index*100: (index+1)*100]
+            else:
+                new_symbol_list = symbol[index*100: -1]
+
         self.crawl_option_webpage_multiple_times(new_symbol_list, folder_name,running_time)
 
     def crawl_single_symbol(self, symbol, folder_name,running_time,driver):

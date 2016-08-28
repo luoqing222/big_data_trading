@@ -14,7 +14,7 @@ def get_us_stock_list(host, user, passwd, db):
     symbol_list=[]
     conn = pymysql.connect(host=host, user=user, passwd=passwd, db=db)
     cur = conn.cursor()
-    cur.execute("SELECT symbol from eodequity where transaction_date= (select max(transaction_date) from eodequity)")
+    cur.execute("SELECT symbol from eodequity where transaction_date= (select max(transaction_date) from eodequity) order by symbol")
     for r in cur:
         symbol_list.append(r[0])
     cur.close()
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     #read  the input parameter from the commandline
     parser=argparse.ArgumentParser()
-    parser.add_argument("--initial", help="symbol with initial")
+    parser.add_argument("--index", help="symbol with index for every 100 stock")
     args = parser.parse_args()
 
     symbol_list = ["FB", "IBM", "A", "AA"]
