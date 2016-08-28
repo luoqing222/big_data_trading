@@ -73,12 +73,14 @@ class YahooOptionWebPageCrawler(object):
                 print("downloading web page for "+symbol+" under windows")
                 try:
                    self.crawl_single_symbol(symbol,folder_name, running_time,driver)
-                except:
+                except Exception:
                     failed_stock.append(symbol)
+                    print(Exception)
                     pass
             try:
                 driver.quit()
-            except:
+            except Exception:
+                print(Exception)
                 pass
 
         if platform.system() == "Linux":
@@ -90,13 +92,15 @@ class YahooOptionWebPageCrawler(object):
                 print("downloading web page for "+symbol+" under linux")
                 try:
                    self.crawl_single_symbol(symbol,folder_name, running_time,driver)
-                except:
+                except Exception:
                     failed_stock.append(symbol)
+                    print(Exception)
                     pass
             try:
                 driver.quit()
                 display.stop()
-            except:
+            except Exception:
+                print(Exception)
                 pass
 
         return failed_stock

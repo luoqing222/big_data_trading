@@ -47,7 +47,7 @@ if __name__ == "__main__":
     parser.add_argument("--index", help="symbol with index for every 100 stock")
     args = parser.parse_args()
 
-    #symbol_list = ["FB", "IBM", "A", "AA"]
+    #symbol_list = ["ABAC"]
     
     temp_folder_name = config.get("csv", "temp_folder")
     #driver_location = config.get("driver", "Phantomjs")
