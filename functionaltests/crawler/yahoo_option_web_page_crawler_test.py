@@ -57,7 +57,7 @@ if __name__ == "__main__":
     running_time=datetime.datetime.now()
     
     if args.initial:
-        data_collector.crawl_option_webpage_partial(symbol_list,temp_folder_name,running_time, args.initial)
+        data_collector.crawl_option_webpage_partial(symbol_list,temp_folder_name,running_time, args.index)
     else:
         data_collector.crawl_option_webpage_multiple_times(symbol_list,temp_folder_name,running_time)
 
