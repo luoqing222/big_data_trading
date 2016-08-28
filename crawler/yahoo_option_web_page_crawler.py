@@ -38,9 +38,9 @@ class YahooOptionWebPageCrawler(object):
         new_symbol_list=[]
         if index*100 <len(symbol_list):
             if (index+1)*100<len(symbol_list):
-                new_symbol_list = symbol[index*100: (index+1)*100]
+                new_symbol_list = symbol_list[index*100: (index+1)*100]
             else:
-                new_symbol_list = symbol[index*100: -1]
+                new_symbol_list = symbol_list[index*100: -1]
 
         self.crawl_option_webpage_multiple_times(new_symbol_list, folder_name,running_time)
 
