@@ -86,7 +86,9 @@ class YahooOptionWebPageCrawler(object):
         if platform.system() == "Linux":
             display =Display(visible = 0, size=(1024,768))
             display.start()
-            driver = webdriver.Chrome(executable_path=self.driver_location)
+            chromedirver = self.driver_location
+            os.environ["webdriver.chrome.driver"] = chromedirver
+            driver = webdriver.Chrome(chromedirver)
             #driver = webdriver.Chrome()
             while len(stock_list)!=0:
                 symbol=stock_list.pop(0)
