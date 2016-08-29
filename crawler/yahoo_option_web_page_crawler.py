@@ -86,6 +86,7 @@ class YahooOptionWebPageCrawler(object):
         if platform.system() == "Linux":
             display =Display(visible = 0, size=(1024,768))
             display.start()
+            print("driver location is "+self.driver_location)
             chromedirver = self.driver_location
             os.environ["webdriver.chrome.driver"] = chromedirver
             driver = webdriver.Chrome(chromedirver)
