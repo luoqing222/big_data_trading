@@ -75,12 +75,12 @@ class YahooOptionWebPageCrawler(object):
                    self.crawl_single_symbol(symbol,folder_name, running_time,driver)
                 except Exception:
                     failed_stock.append(symbol)
-                    print(Exception)
+                    print(str(Exception))
                     pass
             try:
                 driver.quit()
             except Exception:
-                print(Exception)
+                print(str(Exception))
                 pass
 
         if platform.system() == "Linux":
@@ -94,13 +94,13 @@ class YahooOptionWebPageCrawler(object):
                    self.crawl_single_symbol(symbol,folder_name, running_time,driver)
                 except Exception:
                     failed_stock.append(symbol)
-                    print(Exception)
+                    print(str(Exception))
                     pass
             try:
                 driver.quit()
                 display.stop()
             except Exception:
-                print(Exception)
+                print(str(Exception))
                 pass
 
         return failed_stock
