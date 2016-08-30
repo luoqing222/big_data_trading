@@ -84,13 +84,13 @@ class YahooOptionWebPageCrawler(object):
                 pass
 
         if platform.system() == "Linux":
-            display =Display(visible = 0, size=(1024,768))
+            display =Display(visible = 0, size=(800,600))
             display.start()
-            print("driver location is "+self.driver_location)
-            chromedirver = self.driver_location
-            os.environ["webdriver.chrome.driver"] = chromedirver
-            driver = webdriver.Chrome(chromedirver)
-            #driver = webdriver.Chrome()
+            #print("driver location is "+self.driver_location)
+            #chromedirver = self.driver_location
+            #os.environ["webdriver.chrome.driver"] = chromedirver
+            #driver = webdriver.Chrome(chromedirver)
+            driver = webdriver.Chrome()
             while len(stock_list)!=0:
                 symbol=stock_list.pop(0)
                 print("downloading web page for "+symbol+" under linux")
