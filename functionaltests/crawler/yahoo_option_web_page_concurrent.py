@@ -67,7 +67,7 @@ def when_done(r):
 def crawl_option_webpage_all(symbol_list, running_time, folder_name):
     all_failed_stock = set()
     with futures.ProcessPoolExecutor() as pool:
-        for index in range(0,3):
+        for index in range(0,10):
             new_symbol_list = symbol_list[index * 100: (index + 1) * 100]
             future_result=pool.submit(crawl_option_webpage, new_symbol_list, running_time, folder_name)
             future_result.add_done_callback(when_done)
