@@ -24,7 +24,7 @@ def crawl_single_symbol(symbol, folder_name, running_time, driver):
     driver.get(page_link)
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    directory = folder_name+"/"+running_time.strftime("%m%d%Y")+"/"+symbol
+    directory = folder_name+"/test/"+running_time.strftime("%m%d%Y")+"/"+symbol
     for select_menu in soup.findAll("select"):
         if len(select_menu['data-reactid']) != 0:
             for options in select_menu.findAll("option"):
