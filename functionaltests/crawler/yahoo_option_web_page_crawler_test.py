@@ -50,7 +50,6 @@ if __name__ == "__main__":
     #symbol_list = ["ABAC"]
     
     temp_folder_name = config.get("csv", "temp_folder")
-    #driver_location = config.get("driver", "Phantomjs")
     driver_location = config.get("driver", "chrome_driver")
     
     data_collector = yahoo_option_web_page_crawler.YahooOptionWebPageCrawler(symbol_list, driver_location)
