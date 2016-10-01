@@ -20,7 +20,7 @@ class YahooOptionWebPageCrawler(object):
         function to create the directory that save the webpage crawler
         :return: folder name
         '''
-        directory = folder_name+"/"+running_time.strftime("%m%d%Y")+"/"+symbol
+        directory = folder_name+"/"+running_time.strftime("%m%d%Y")+"/YahooOption/"+symbol
         if not os.path.exists(directory):
             os.makedirs(directory)
         return directory
