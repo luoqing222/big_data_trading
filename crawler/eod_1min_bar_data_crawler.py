@@ -98,11 +98,11 @@ class Eod1MinBarDataCollector:
         '''
         src_file_name= download_folder + "/" + file_name + "_"+ date_time.strftime('%Y%m%d') +".csv"
         print(src_file_name)
-        des_file_folder = des_folder+ "/" + date_time.strftime('%Y_%m_%d')+"/EOD"
+        des_file_folder = des_folder+ "/" + date_time.strftime("%m%d%Y")+"/EOD"
         if not os.path.exists(des_file_folder):
             os.makedirs(des_file_folder)
         
-        des_file_name= des_folder+ "/" + date_time.strftime('%Y_%m_%d')+"/EOD/"+file_name + "_BAR_1MIN_"+ date_time.strftime('%Y%m%d') +".csv"
+        des_file_name= des_folder+ "/" + date_time.strftime("%m%d%Y")+"/EOD/"+file_name + "_BAR_1MIN_"+ date_time.strftime('%Y%m%d') +".csv"
         if os.path.exists(src_file_name) and os.path.getsize(src_file_name)>0:
             logger.info("%s is successfully downloaded", src_file_name)
             try:

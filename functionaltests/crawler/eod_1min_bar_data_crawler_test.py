@@ -24,8 +24,8 @@ if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.read(config_file_folder+"/"+config_file_name)
 
-    #running_time=datetime.datetime.now()
-    running_time = datetime.datetime(year=2016, month=9, day=30)
+    running_time=datetime.datetime.now()
+    #running_time = datetime.datetime(year=2016, month=9, day=30)
     download_folder = config.get("driver", "download_folder")
     temp_folder_name = config.get("csv", "temp_folder")
     driver_location = config.get("driver", "chrome_driver")
