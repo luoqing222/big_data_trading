@@ -5,6 +5,7 @@ import datetime
 import os
 from crawler import eod_1min_bar_data_crawler
 from crawler import eod_trading_data_ftp_downloader
+from crawler import google_finance_web_page_crawler
 
 logger = logging.getLogger(__name__)
 
