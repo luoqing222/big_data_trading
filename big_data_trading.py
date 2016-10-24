@@ -6,6 +6,7 @@ import os
 from crawler import eod_1min_bar_data_crawler
 from crawler import eod_trading_data_ftp_downloader
 from crawler import google_finance_web_page_crawler
+from messenger import messenger_from_gmail
 
 logger = logging.getLogger(__name__)
 
@@ -61,6 +62,13 @@ def downloadGoogleFinanceData(config, running_time):
     except Exception as e:
         logger.warning("downloadGoogleFinanceData: " + str(e))
 
+def notify_execution(config, broadcast_list ,log_file_name, message_folder):
+    email = config.get("gmail", "email")
+    passwd = config.get("gmail","password")
+    gmail_messenger = messenger_from_gmail.MessengerFromGmail(email, passwd)
+    gmail_messenger.send_email(log_file_name, broadcast_list, message_folder)
+
+
 if __name__ == "__main__":
     start_time=time.time()
 
@@ -86,6 +94,9 @@ if __name__ == "__main__":
     #begin the data process
     download_raw_data(config, running_time)
 
+    #send the log file to me
+    broadcast_list=["luoqing222@gmail.com"]
+    notify_execution(config, broadcast_list, log_file_name, message_folder)
 
     print("--- %s seconds ---" % (time.time() - start_time))
 
