@@ -20,17 +20,18 @@ if __name__ == "__main__":
 
     #specify the running time
     #running_time=datetime.datetime.now()
-    running_time = datetime.datetime(year=2016, month=11, day=13)
+    running_time = datetime.datetime(year=2016, month=11, day=14)
 
     folder_name = shareUtils.get_temp_yahoo_option_page_location(running_time)
+    #folder_name = shareUtils.get_temp_eod_data_location(running_time)
     print(folder_name)
     
-    thresh_hold = 300,000
+    thresh_hold = 300000
     files = check_folder(folder_name)
     total_file_size = [getsize(file) for file in files]
     non_zero_file_size = [getsize(file) for file in files if getsize(file)!=0]
     valide_file_size = [getsize(file) for file in files if getsize(file)> thresh_hold]
-    print("total number of file is "+ len(total_file_size))
-    print("number of non zero file is "+ len(non_zero_file_size))
-    print("number of valid file is "+ len(valide_file_size))
+    print("total number of file is "+ str(len(total_file_size)))
+    print("number of non zero file is "+ str(len(non_zero_file_size)))
+    print("number of valid file is "+ str(len(valide_file_size)))
 
