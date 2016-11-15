@@ -1,5 +1,10 @@
 from os import listdir
 from os.path import isfile, join, getsize
+import sys
+import os
+import datetime
+sys.path.append(os.path.dirname(os.path.dirname((os.path.realpath(__file__)))))
+from share import download_files_share
 
 def check_folder(folder_name):
     onlyfiles =[join(folder_name, f) for f in listdir(folder_name) if isfile(join(folder_name, f))]
@@ -10,15 +15,22 @@ def check_folder(folder_name):
     
 
 if __name__ == "__main__":
+    #create the object
+    shareUtils = download_files_share.DownloadFilesShare(os.path.dirname(os.path.dirname((os.path.realpath(__file__))))+"\setting.ini")
+
     #specify the running time
     #running_time=datetime.datetime.now()
-    #running_time = datetime.datetime(year=2016, month=10, day=21)
+    running_time = datetime.datetime(year=2016, month=11, day=14)
 
-    #specify the log file and log file clocation
-    #log_file_name = "daily_run_"+running_time.strftime('%Y%m%d')+".log"
+    folder_name = shareUtils.get_temp_yahoo_option_page_location(running_time)
+    print(folder_name)
     
-    folder_name = "C:\\Users\\luoq\\dev\\data"
+    thresh_hold = 300,000
     files = check_folder(folder_name)
-    file_size = [getsize(file) for file in files if getsize(file)!=0]
-    print(file_size)    
+    total_file_size = [getsize(file) for file in files]
+    non_zero_file_size = [getsize(file) for file in files if getsize(file)!=0]
+    valide_file_size = [getsize(file) for file in files if getsize(file)> thresh_hold]
+    print("total number of file is "+ len(total_file_size))
+    print("number of non zero file is "+ len(non_zero_file_size))
+    print("number of valid file is "+ len(valide_file_size))
 
