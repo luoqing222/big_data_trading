@@ -16,7 +16,7 @@ def check_folder(folder_name):
 
 if __name__ == "__main__":
     #create the object
-    shareUtils = download_files_share.DownloadFilesShare(os.path.dirname(os.path.dirname((os.path.realpath(__file__))))+"\setting.ini")
+    shareUtils = download_files_share.DownloadFilesShare(os.path.dirname(os.path.dirname((os.path.realpath(__file__))))+"/setting.ini")
 
     #specify the running time
     #running_time=datetime.datetime.now()
