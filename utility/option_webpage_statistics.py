@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     #specify the running time
     #running_time=datetime.datetime.now()
-    running_time = datetime.datetime(year=2016, month=11, day=13)
+    running_time = datetime.datetime(year=2016, month=11, day=10)
 
     folder_name = shareUtils.get_temp_yahoo_option_page_location(running_time)
     #folder_name = shareUtils.get_temp_eod_data_location(running_time)
