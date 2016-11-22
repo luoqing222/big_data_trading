@@ -61,9 +61,8 @@ class GoogleFinanceWebPageCrawler(object):
             try:
                 display = Display(visible=0, size=(800, 600))
                 display.start()
-                driver = webdriver.Chrome()
+                driver = webdriver.Chrome(executable_path=self.driver_location)
                 self.crawl_single_date(folder_name, running_time,driver)
-                #time.sleep(60)
                 driver.quit()
                 display.stop()
             except Exception as e:
