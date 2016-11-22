@@ -90,7 +90,7 @@ class YahooOptionWebPageCrawler(object):
             #chromedirver = self.driver_location
             #os.environ["webdriver.chrome.driver"] = chromedirver
             #driver = webdriver.Chrome(chromedirver)
-            driver = webdriver.Chrome()
+            driver = webdriver.Chrome(executable_path=self.driver_location)
             while len(stock_list)!=0:
                 symbol=stock_list.pop(0)
                 print("downloading web page for "+symbol+" under linux")
