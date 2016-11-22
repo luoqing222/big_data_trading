@@ -83,8 +83,8 @@ if __name__ == "__main__":
         os.makedirs(message_folder)
 
     #specify the running time
-    #running_time=datetime.datetime.now()
-    running_time = datetime.datetime(year=2016, month=11, day=21)
+    running_time=datetime.datetime.now()
+    #running_time = datetime.datetime(year=2016, month=11, day=21)
 
     #specify the log file and log file clocation
     log_file_name = "daily_run_"+running_time.strftime('%Y%m%d')+".log"
