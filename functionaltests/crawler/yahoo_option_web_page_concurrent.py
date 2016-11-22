@@ -41,7 +41,7 @@ def crawl_single_symbol(symbol, folder_name, running_time, driver):
 def crawl_option_webpage(symbol_list, running_time, folder_name):
     display = Display(visible=0, size=(800, 600))
     display.start()
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(executable_path=self.driver_location)
     failed_stock=set()
     while len(symbol_list) != 0:
         symbol = symbol_list.pop(0)
