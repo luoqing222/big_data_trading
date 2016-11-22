@@ -63,6 +63,7 @@ class GoogleFinanceWebPageCrawler(object):
                 display.start()
                 driver = webdriver.Chrome()
                 self.crawl_single_date(folder_name, running_time,driver)
+                #time.sleep(60)
                 driver.quit()
                 display.stop()
             except Exception as e:
